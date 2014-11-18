@@ -1,0 +1,24 @@
+{
+  "name": "cityblocs",
+  "version": "0.0.0",
+  "authors": [
+    "Michael Underwood <mike.underwood@gmail.com>"
+  ],
+  "main": "app/index.html",
+  "license": "CC BY-SA 4.0",
+  "homepage": "www.cityblocs.ca",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.2",
+    "bootstrap": "~3.3.1",
+    "angular-route": "~1.3.3",
+    "angular-sanitize": "~1.3.3"
+  }
+}
