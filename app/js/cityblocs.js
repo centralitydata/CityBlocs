@@ -3,7 +3,8 @@ angular.module('cityblocs', [
   'ngRoute',
   'cityblocsControllers',
   'cityblocsDirectives',
-  'cityblocsFilters'
+  'cityblocsFilters',
+  'markdown'
 ])
   .config([
     '$routeProvider',

@@ -7,9 +7,12 @@ angular.module('cityblocsControllers', ['ngSanitize'])
       $http.get('pages/about.json')
         .success(function (data) {
           $scope.title = data.title;
-          $scope.desc = $sce.trustAsHtml(data.desc);
+          /*$scope.desc = $sce.trustAsHtml(data.desc);
           $scope.ack = $sce.trustAsHtml(data.ack);
-          $scope.legal = $sce.trustAsHtml(data.legal);
+          $scope.legal = $sce.trustAsHtml(data.legal);*/
+          $scope.desc = data.desc.join('\n\n');
+          $scope.ack = data.ack.join('\n\n');
+          $scope.legal = data.legal.join('\n\n');
         });
     }
   ])
