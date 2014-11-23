@@ -5,8 +5,8 @@ The current version of CityBlocs can be visited at
 
 ## State of the app
 
-With [node](http://nodejs.org/) and [npm](https://www.npmjs.org/)
-properly configured,
+With [node](http://nodejs.org/), [npm](https://www.npmjs.org/) and
+[bower](http://bower.io/) installed and configured,
 
 > npm start
 
