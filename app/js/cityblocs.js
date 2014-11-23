@@ -16,9 +16,8 @@ angular.module('cityblocs', [
           controller: 'AboutCtrl'
         })
         .when('/contact', {
-          templateUrl: 'partials/contact.html'
-          // Currently the page is basically static, with no scope variables
-          // displayed, and so no controller required.
+          templateUrl: 'partials/contact.html',
+          controller: 'ContactCtrl'
         })
         .when('/council/:city', {
           templateUrl: 'partials/councils.html',

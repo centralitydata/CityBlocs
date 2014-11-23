@@ -1,15 +1,11 @@
 <div class="row">
-  <h1>Contact us</h1>
-  <p>We here at CityBlocs are always happy to hear any comments, suggestions, or requests for additional cities. We can be reached by email at <a href="mail' + '' + 'to:info' + String.fromCharCode(64) + 'cityblocs.ca">info' + String.fromCharCode(64) + 'cityblocs.ca</a>. We are currently in beta, and still hard at work perfecting the mobile and interactive experiences on the site. Please let us know if you find a bug or unexpected feature.</p>
-  <p>Paul will gladly discuss municipal politics with you on Twitter, <a href="http://twitter.com/paulisci">@paulisci</a>. For technical details related to the online presentation of the data, tweet Michael <a href="http://twitter.com/munderwood">@munderwood</a>. We\'ve recently coaxed Adam into using this newfangled Twitterverse thing, so make him feel welcome by sending any queries about the data scraping and crunching we\'ve done to <a href="http://twitter.com/h2o_bro">@h2o_bro</a>.</p>
-  <p>CityBlocs is made in <a href="#TODO">Calgary</a>, Alberta, Canada.</p>
-  <h1>Who are we?</h1>
+  <h1>{{ contactUs }}</h1>
+  <div data-ng-bind-html="org | markdown" class="textpanel"></div>
+  <h1>{{ whoAreWe }}</h1>
   <div class="col-sm-8">
     <div data-centrality-graph></div>
   </div>
-  <div class="col-sm-4"><div class="textpanel buffer" id="bios">
-    <p><span class="devname">Adam D\'Souza</span> holds a PhD in physics. Besides data analysis, his interests include reading, cooking, playing the violin, and tweeting. He plans to try one or more of these things very soon.</p>
-    <p><span class="devname">Paul Fairie</span> completed his PhD in political science at the University of Calgary in 2013. He has taught classes in local politics and research methods. Follow him on twitter <a href="http://twitter.com/paulisci">@paulisci</a>, where he tweets fun charts and bad jokes.</p>
-    <p><span class="devname">Michael Underwood</span> is a software developer with a doctorate in physics. A Calgary native, he has also lived abroad and travelled extensively for work and for play. He enjoys finding solutions wherever problems exist.</p>
-  </div></div>
+  <div class="col-sm-4">
+    <div data-ng-bind-html="bios | markdown" class="textpanel buffer" id="bios"></div>
+  </div>
 </div>

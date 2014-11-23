@@ -1,0 +1,14 @@
+{
+	"contactUs": "Contact us",
+	"org": [
+		"We here at CityBlocs are always happy to hear any comments, suggestions, or requests for additional cities. We can be reached by email at `info` `<at>` `cityblocs.ca`. We are currently in beta, and still hard at work perfecting the mobile and interactive experiences on the site. Please let us know if you find a bug or unexpected feature.",
+		"Paul will gladly discuss municipal politics with you on Twitter, [@paulisci](http://twitter.com/paulisci). For technical details related to the online presentation of the data, tweet Michael [@munderwood](http://twitter.com/munderwood). We've recently coaxed Adam into using this newfangled Twitterverse thing too, so make him feel welcome by sending any queries about the data scraping and crunching we've done to [@h2o_bro](http://twitter.com/h2o_bro).",
+		"CityBlocs is made in Calgary, Alberta, Canada."
+	],
+	"whoAreWe": "Who made this?",
+	"bios": [
+		"**Adam D'Souza** holds a PhD in physics. Besides data analysis, his interests include reading, cooking, playing the violin, and tweeting. He plans to try one or more of these things very soon.",
+		"**Paul Fairie** completed his PhD in political science at the University of Calgary in 2013. He has taught classes in local politics and research methods. Follow him on twitter [@paulisci](http://twitter.com/paulisci), where he tweets fun charts and bad jokes.",
+		"**Michael Underwood** is a software developer with a doctorate in physics. A Calgary native, he has also lived abroad and travelled extensively for work and for play. He enjoys finding solutions wherever problems exist."
+	]
+}
