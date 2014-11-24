@@ -34,9 +34,16 @@ angular.module('cityblocsControllers', ['ngSanitize'])
     '$scope', '$http', '$routeParams',
     function ($scope, $http, $routeParams) {
       'use strict';
-      // Showing a given council's graph and analysis
-      $scope.city = $routeParams.city;
-      $scope.year = $routeParams.year;
+      // Load a hardcoded test JSON page, regardless of actual city or year
+      $http.get('pages/testCouncil.json')
+        .success(function (data) {
+          $scope.title = data.title;
+          $scope.charge = data.charge;
+          $scope.dist = data.dist;
+          $scope.edges = data.edges;
+          $scope.descLead = data.desc[0];
+          $scope.descRest = data.desc.splice(1);
+        });
     }
   ])
   .controller('CouncilListCtrl', [

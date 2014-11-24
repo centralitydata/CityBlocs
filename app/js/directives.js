@@ -94,4 +94,118 @@ angular.module('cityblocsDirectives', ['d3'])
         }
       }
     }
+  ])
+  .directive('councilGraph', ['$window', 'd3Service',
+    function($window, d3Service) {
+      return {
+        restrict: 'EA',
+        scope: {},
+        link: function(scope, element, attrs) {
+          d3Service.d3().then(function(d3) {
+            // Select the base element to which the directive was applied
+            var svg = d3.select(element[0])
+              .append('svg') // Append a new SVG element
+              .style('width', '100%'); // Auto-resize to full width
+
+            // Reapply when the window size changes, for responsiveness
+            window.onresize = function() {
+              scope.$apply();
+            };
+
+            // Watch for resize event
+            scope.$watch(function() {
+              return angular.element($window)[0].innerWidth;
+            }, function() {
+              scope.render();
+            });
+
+            scope.render = function () {
+              // Clear the existing graph
+              svg.selectAll('*').remove();
+
+              var nodes = [];
+              var links = $scope.edges;
+
+              // Compute the distinct nodes from the links.
+              links.forEach(function (link) {
+                link.source = nodes[link.source] || (nodes[link.source] = {name: link.source});
+                link.target = nodes[link.target] || (nodes[link.target] = {name: link.target});
+              });
+
+              var width = d3.select(element[0]).node().offsetWidth;
+              var height = window.innerHeight;
+              // TODO: Set this properly
+              var analysisHeight = height;
+              var radius = 4;
+              var charge = scope.charge * width / 640;
+              var linkdist = scope.dist * width / 640;
+
+              svg.attr('id', 'city-svg')
+                .attr('viewBox', '0 0 ' + width + ' ' + height);
+
+              var force = d3.layout.force()
+                  .nodes(d3.values(nodes))
+                  .links(links)
+                  .size([width, height])
+                  .charge(charge)
+                  .linkDistance(linkdist)
+                  .alpha(0.9)
+                  .on('tick', tick)
+                  .start();
+
+              var path = svg.append('g').selectAll('path' + prn)
+                  .data(force.links())
+                  .enter()
+                    .append('line')
+                    .attr('class', 'link');
+
+              var circle = svg.append('g').selectAll('circle')
+                  .data(force.nodes())
+                  .enter()
+                    .append('circle')
+                    .attr('r', radius)
+                    .call(force.drag);
+
+              var text = svg.append('g').selectAll('text')
+                  .data(force.nodes())
+                  .enter()
+                    .append('text')
+                    .attr('x', 4)
+                    .attr('y', '.31em')
+                    .attr('class', 'node-text')
+                    .text(function (d) { return d.name; });
+
+              function tick () {
+                'use strict';
+                // TODO: Check width and height usage
+                var w = width;
+                var h = height;
+                var r = radius + 3;
+                force.size([w, h]);
+                svg.attr('width', w)
+                    .attr('height', h)
+                    .attr('viewBox', '0 0 ' + w + ' ' + h);
+                circle.attr('cx', function (d) {
+                    d.x = Math.max(r, Math.min(w - r, d.x));
+                    return d.x;
+                  })
+                  .attr('cy', function (d) {
+                    d.y = Math.max(r, Math.min(h - r, d.y));
+                    return d.y;
+                  });
+                path.attr('x1', function(d) { return d.source.x; })
+                    .attr('y1', function(d) { return d.source.y; })
+                    .attr('x2', function(d) { return d.target.x; })
+                    .attr('y2', function(d) { return d.target.y; });
+                text.attr('transform', function (d) {
+                    var x = Math.max(1, Math.min(w - 2*r - this.getComputedTextLength(), d.x));
+                    var y = Math.max(1, Math.min(h - 1, d.y));
+                    return 'translate(' + x + ',' + y + ')';
+                  });
+              }
+            };
+          });
+        }
+      }
+    }
   ]);
